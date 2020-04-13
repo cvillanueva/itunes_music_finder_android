@@ -11,6 +11,7 @@ abstract class BaseRecyclerViewAdapter<T>:  RecyclerView.Adapter<RecyclerView.Vi
     protected lateinit var itemClickListener: OnItemClickListener
 
     fun addItems(items: ArrayList<T>) {
+        println("BaseRecyclerViewAdapter addItems() q:${items.count()}")
         this.list?.addAll(items)
         reload()
     }

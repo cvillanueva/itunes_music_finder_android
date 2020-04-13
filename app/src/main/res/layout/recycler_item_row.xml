@@ -25,7 +25,8 @@
         android:layout_marginTop="40dp"
         android:layout_weight="1"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="93dp"
+        app:layout_constraintLeft_toRightOf="@+id/albumArt"
+        android:layout_marginLeft="20dp"
         tools:text="Some date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

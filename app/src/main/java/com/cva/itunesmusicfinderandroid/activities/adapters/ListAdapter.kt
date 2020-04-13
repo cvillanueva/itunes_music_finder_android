@@ -31,7 +31,7 @@ class ListAdapter: BaseRecyclerViewAdapter<AlbumEntity.AlbumItemModel>() {
         }
 
         fun setUpView(album: AlbumEntity.AlbumItemModel?) {
-            album?.id?.let { imageView.setImageResource(it) }
+//            album?.id?.let { imageView.setImageResource(it) }
             textView.text = album?.name
         }
 

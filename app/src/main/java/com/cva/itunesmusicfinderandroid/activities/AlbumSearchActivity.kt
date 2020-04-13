@@ -3,27 +3,32 @@ package com.cva.itunesmusicfinderandroid.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SearchView
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.cva.itunesmusicfinderandroid.R
+import com.cva.itunesmusicfinderandroid.activities.fragments.ListFragment
 import com.cva.itunesmusicfinderandroid.models.entities.AlbumEntity
 import com.cva.itunesmusicfinderandroid.presenters.AlbumSearchPresenter
 import com.cva.itunesmusicfinderandroid.presenters.AlbumSearchPresenterInterface
-import kotlinx.android.synthetic.main.activity_albumsearch.*
 
 class AlbumSearchActivity : AppCompatActivity(), AlbumSearchPresenterInterface {
 
-    private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var searchView: SearchView
+    private lateinit var listFragment: ListFragment
+    private var savedInstanceState: Bundle? = null
+    private var albumSearchPresenter: AlbumSearchPresenter? = null
 
-    var albumSearchPresenter: AlbumSearchPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        println("onCreate()")
         setContentView(R.layout.activity_albumsearch)
+        this.savedInstanceState = savedInstanceState
 
         searchView = findViewById(R.id.searchView)
-        linearLayoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = linearLayoutManager
+
+        if(savedInstanceState == null) {
+                this.listFragment = ListFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, this.listFragment, ListFragment.TAG).commit()
+        }
 
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
 
@@ -33,6 +38,7 @@ class AlbumSearchActivity : AppCompatActivity(), AlbumSearchPresenterInterface {
 
             override fun onQueryTextSubmit(query: String?): Boolean {
                 println("onQueryTextSubmit() query:"+query)
+                println("listFragment:$this.listFragment")
 
                 if (query != null && query != "") {
                     albumSearchPresenter = AlbumSearchPresenter(presenterDelegate = this@AlbumSearchActivity, searchedArtist = query)
@@ -44,7 +50,9 @@ class AlbumSearchActivity : AppCompatActivity(), AlbumSearchPresenterInterface {
     }
 
     override fun gotAlbumsList(albumList: List<AlbumEntity.AlbumItemModel>) {
-        println("gotAlbumsList() q:"+albumList.count())
+        this@AlbumSearchActivity.runOnUiThread {
+            this.listFragment.addItems(albumsList = albumList)
+        }
     }
 
     override fun gotSearchAlbumsConectivityError() {

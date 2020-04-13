@@ -49,7 +49,6 @@ class ListFragment: Fragment() {
     private fun initView(){
         setUpAdapter()
         initializeRecyclerView()
-        setUpDummyData()
     }
 
     private fun setUpAdapter() {
@@ -71,11 +70,8 @@ class ListFragment: Fragment() {
         recyclerView.adapter = adapter
     }
 
-    private fun setUpDummyData(){
-        var list: ArrayList<AlbumEntity.AlbumItemModel> = ArrayList<AlbumEntity.AlbumItemModel>()
-        list.add(AlbumEntity.AlbumItemModel("La espada y la pared", R.drawable.ic_launcher_background))
-        list.add(AlbumEntity.AlbumItemModel("Fome", R.drawable.ic_launcher_background))
-        list.add(AlbumEntity.AlbumItemModel("ReFome", R.drawable.ic_launcher_background))
-        adapter.addItems(list)
+    fun addItems(albumsList: List<AlbumEntity.AlbumItemModel>) {
+        println("ListFragment addItems() q:"+albumsList.count())
+        adapter.addItems(ArrayList(albumsList))
     }
 }

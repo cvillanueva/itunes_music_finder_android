@@ -24,6 +24,7 @@ class AlbumSearchPresenter: AlbumSearchDataHandlerInterface {
     // - Parameter albumList: Album list received from data handler
     override fun gotAlbumsList(albumList: List<AlbumEntity.AlbumItemModel>) {
         println("gotAlbumsList() albumsList.count:"+albumList.count())
+        this.presenterDelegate.gotAlbumsList(albumList = albumList)
     }
 
     // Returns a server error to presenter

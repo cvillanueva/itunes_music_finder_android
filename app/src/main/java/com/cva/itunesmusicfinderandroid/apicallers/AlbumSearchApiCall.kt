@@ -44,7 +44,7 @@ class AlbumSearchApiCall {
                     val jsonString = response.body?.string()
 
                     if (jsonString != null) {
-                        println("onResponse() response:$jsonString")
+//                        println("onResponse() response:$jsonString")
                         delegate.gotAlbumsList(jsonString = jsonString)
                     }
                 }

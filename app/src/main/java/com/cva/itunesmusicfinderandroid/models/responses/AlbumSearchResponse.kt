@@ -41,7 +41,7 @@ class AlbumSearchResponse {
         val moshi = Moshi.Builder().build()
         val jsonAdapter: JsonAdapter<SearchResponse> = moshi.adapter(SearchResponse::class.java)
         searchResponse = jsonAdapter.fromJson(json)
-        println("searchResponse:$searchResponse")
+//        println("searchResponse:$searchResponse")
     }
 
     fun getAlbumsList(): List<AlbumResponse> {
