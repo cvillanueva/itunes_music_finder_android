@@ -20,13 +20,17 @@
 
     <TextView
         android:id="@+id/albumName"
-        android:layout_width="0dp"
+        android:layout_width="289dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_weight="1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/albumArt"
         android:layout_marginLeft="20dp"
-        tools:text="Some date" />
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_weight="1"
+        android:lines="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/albumArt"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="This is a super very long title for a boring music album" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
