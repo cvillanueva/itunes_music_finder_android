@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">iTunesMusicFinderAndroid</string>
+    <string name="app_name">iTunes Music Finder</string>
+    <string name="logo_description">iTunes Logo</string>
+
+    <string name="album_search_item_albumname">Album name</string>
+    <string name="album_search_item_artistname">Artist name</string>
+    <string name="album_search_item_genreyear">Genre and year</string>
 </resources>

@@ -34,21 +34,20 @@ class ListAdapter: BaseRecyclerViewAdapter<AlbumEntity.AlbumItemModel>() {
         }
 
         fun setUpView(album: AlbumEntity.AlbumItemModel?) {
-            view.albumName.text = album?.name
+            view.album_item_name.text = album?.name
+            view.album_item_artist.text = album?.artist
+            view.album_item_genreyear.text = album?.genreAndYear
 
             if (album?.artworkUrl != null) {
-                Glide.with(view.context).load(album?.artworkUrl).into(view.albumArt);
+                Glide.with(view.context).load(album?.artworkUrl).into(view.album_item_art);
             }
 
             if (album?.odd!!) {
-                view.setBackgroundColor(Color.LTGRAY)
-                view.albumName.setTextColor(Color.WHITE)
+                view.setBackgroundColor(Color.argb(1, 225, 225, 225))
             } else {
                 view.setBackgroundColor(Color.WHITE)
-                view.albumName.setTextColor(Color.BLACK)
             }
 
-            view.albumArt.setSh
         }
 
         override fun onClick(v: View?) {

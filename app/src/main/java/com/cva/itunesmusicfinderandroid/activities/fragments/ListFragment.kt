@@ -74,4 +74,8 @@ class ListFragment: Fragment() {
         println("ListFragment addItems() q:"+albumsList.count())
         adapter.addItems(ArrayList(albumsList))
     }
+
+    fun clear() {
+        adapter.clear()
+    }
 }
