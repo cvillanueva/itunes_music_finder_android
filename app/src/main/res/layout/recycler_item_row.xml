@@ -33,6 +33,11 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?attr/textAppearanceListItem"
                 android:layout_alignParentTop="true"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeStepGranularity="2sp"
+                android:maxLines="1"
                 tools:text="@string/album_search_item_albumname" />
 
             <TextView
